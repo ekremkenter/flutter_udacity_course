@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HelloRectangle extends StatelessWidget {
+class HelloRectangleTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

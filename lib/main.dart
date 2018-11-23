@@ -38,7 +38,7 @@ class CoursesWidget extends StatelessWidget {
           ListTile(
             title: Text('01 - Hello Rectangle'),
             onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => HelloRectangle())),
+                MaterialPageRoute(builder: (context) => HelloRectangleTask())),
           )
         ],
       ),
