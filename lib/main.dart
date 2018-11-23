@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_udacity_course/courses/01_hello_rectangle/main.dart';
+import 'package:flutter_udacity_course/courses/02_category_widget/main.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,13 +36,20 @@ class CoursesWidget extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          ListTile(
-            title: Text('01 - Hello Rectangle'),
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => HelloRectangleTask())),
-          )
+          getCourseWidget(
+              context, '01 - Hello Rectangle', HelloRectangleTask()),
+          getCourseWidget(
+              context, '02 - Category Widget', CategoryWidgetTask()),
         ],
       ),
+    );
+  }
+
+  ListTile getCourseWidget(BuildContext context, String text, Widget widget) {
+    return ListTile(
+      title: Text(text),
+      onTap: () => Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => widget)),
     );
   }
 }
