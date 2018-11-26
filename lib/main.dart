@@ -40,7 +40,6 @@ class CoursesWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Udacity Course'),
-        backgroundColor: Color.fromARGB(0xFF, 66, 165, 245)
       ),
       body: ListView(
         children: <Widget>[
