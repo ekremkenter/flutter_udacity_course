@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_udacity_course/courses/01_hello_rectangle/main.dart';
 import 'package:flutter_udacity_course/courses/02_category_widget/main.dart';
+import 'package:flutter_udacity_course/courses/03_category_route/category_route.dart'
+    as c3;
 
 void main() => runApp(MyApp());
 
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Udacity Course',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -40,6 +43,7 @@ class CoursesWidget extends StatelessWidget {
               context, '01 - Hello Rectangle', HelloRectangleTask()),
           getCourseWidget(
               context, '02 - Category Widget', CategoryWidgetTask()),
+          getCourseWidget(context, '03 - Category Route', c3.CategoryRoute()),
         ],
       ),
     );
