@@ -5,6 +5,8 @@ import 'package:flutter_udacity_course/courses/03_category_route/category_route.
     as c3;
 import 'package:flutter_udacity_course/courses/04_navigation_task/category_route.dart'
     as c4;
+import 'package:flutter_udacity_course/courses/05_stateful_widgets/category_route.dart'
+    as c5;
 
 void main() => runApp(MyApp());
 
@@ -38,6 +40,7 @@ class CoursesWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Udacity Course'),
+        backgroundColor: Color.fromARGB(0xFF, 66, 165, 245)
       ),
       body: ListView(
         children: <Widget>[
@@ -47,6 +50,7 @@ class CoursesWidget extends StatelessWidget {
               context, '02 - Category Widget', CategoryWidgetTask()),
           getCourseWidget(context, '03 - Category Route', c3.CategoryRoute()),
           getCourseWidget(context, '04 - Navigation Task', c4.CategoryRoute()),
+          getCourseWidget(context, '05 - Stateful Widget Task', c5.CategoryRoute()),
         ],
       ),
     );
