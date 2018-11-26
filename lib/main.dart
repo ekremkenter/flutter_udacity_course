@@ -3,6 +3,8 @@ import 'package:flutter_udacity_course/courses/01_hello_rectangle/main.dart';
 import 'package:flutter_udacity_course/courses/02_category_widget/main.dart';
 import 'package:flutter_udacity_course/courses/03_category_route/category_route.dart'
     as c3;
+import 'package:flutter_udacity_course/courses/04_navigation_task/category_route.dart'
+    as c4;
 
 void main() => runApp(MyApp());
 
@@ -44,6 +46,7 @@ class CoursesWidget extends StatelessWidget {
           getCourseWidget(
               context, '02 - Category Widget', CategoryWidgetTask()),
           getCourseWidget(context, '03 - Category Route', c3.CategoryRoute()),
+          getCourseWidget(context, '04 - Navigation Task', c4.CategoryRoute()),
         ],
       ),
     );
