@@ -9,6 +9,8 @@ import 'package:flutter_udacity_course/courses/05_stateful_widgets/category_rout
     as c5;
 import 'package:flutter_udacity_course/courses/06_input_task/category_route.dart'
     as c6;
+import 'package:flutter_udacity_course/courses/07_backdrop/category_route.dart'
+    as c7;
 
 void main() => runApp(MyApp());
 
@@ -53,6 +55,7 @@ class CoursesWidget extends StatelessWidget {
           getCourseWidget(context, '04 - Navigation Task', c4.CategoryRoute()),
           getCourseWidget(context, '05 - Stateful Widget Task', c5.CategoryRoute()),
           getCourseWidget(context, '06 - Input Task', c6.CategoryRoute()),
+          getCourseWidget(context, '07 - Backdrop', c7.CategoryRoute()),
         ],
       ),
     );
