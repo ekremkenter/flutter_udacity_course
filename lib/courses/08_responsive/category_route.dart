@@ -3,13 +3,12 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_udacity_course/courses/07_backdrop/backdrop.dart';
-import 'package:flutter_udacity_course/courses/07_backdrop/unit_converter.dart';
 
+import 'backdrop.dart';
 import 'category.dart';
 import 'category_tile.dart';
 import 'unit.dart';
-
+import 'unit_converter.dart';
 
 /// Category Route (screen).
 ///
@@ -28,9 +27,6 @@ class CategoryRoute extends StatefulWidget {
 class _CategoryRouteState extends State<CategoryRoute> {
   Category _defaultCategory;
   Category _currentCategory;
-  Color _backgroundColor = Colors.green[100];
-
-  // [Category]
   final _categories = <Category>[];
   static const _categoryNames = <String>[
     'Length',
@@ -82,31 +78,39 @@ class _CategoryRouteState extends State<CategoryRoute> {
   void initState() {
     super.initState();
     for (var i = 0; i < _categoryNames.length; i++) {
-      _categories.add(Category(
+      var category = Category(
         name: _categoryNames[i],
         color: _baseColors[i],
-        iconLocation: Icons.flight_takeoff,
+        iconLocation: Icons.cake,
         units: _retrieveUnitList(_categoryNames[i]),
-      ));
+      );
+      if (i == 0) {
+        _defaultCategory = category;
+      }
+      _categories.add(category);
     }
-    _defaultCategory = _categories[0];
-    _currentCategory = _defaultCategory;
-
   }
 
   /// Function to call when a [Category] is tapped.
   void _onCategoryTap(Category category) {
     setState(() {
       _currentCategory = category;
-      _backgroundColor = _currentCategory.color['highlight'];
     });
-
   }
 
-  /// Makes the correct number of rows for the list view.
+  /// Makes the correct number of rows for the list view, based on whether the
+  /// device is portrait or landscape.
   ///
-  /// For portrait, we use a [ListView].
-  Widget _buildCategoryWidgets() {
+  /// For portrait, we use a [ListView]. For landscape, we use a [GridView].
+  Widget _buildCategoryWidgets(Orientation orientation) {
+    if (orientation == Orientation.portrait) {
+      return _buildPortraitCategoryWidgets();
+    } else {
+      return _buildLandscapeCategoryWidgets();
+    }
+  }
+
+  Widget _buildPortraitCategoryWidgets() {
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {
         return CategoryTile(
@@ -115,6 +119,19 @@ class _CategoryRouteState extends State<CategoryRoute> {
         );
       },
       itemCount: _categories.length,
+    );
+  }
+
+  Widget _buildLandscapeCategoryWidgets() {
+    return GridView.count(
+      crossAxisCount: 2,
+      childAspectRatio: 3,
+      children: _categories.map((Category category) {
+        return CategoryTile(
+          category: category,
+          onTap: _onCategoryTap,
+        );
+      }).toList(),
     );
   }
 
@@ -133,39 +150,22 @@ class _CategoryRouteState extends State<CategoryRoute> {
   Widget build(BuildContext context) {
     final listView = Padding(
       padding: EdgeInsets.only(
-        left: 8,
-        right: 8,
-        bottom: 48
+        left: 8.0,
+        right: 8.0,
+        bottom: 48.0,
       ),
-      child: _buildCategoryWidgets(),
+      child: _buildCategoryWidgets(MediaQuery.of(context).orientation),
     );
 
-    final appBar = AppBar(
-      elevation: 0.0,
-      title: Text(
-        'Unit Converter',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 30.0,
-        ),
-      ),
-      centerTitle: true,
-      backgroundColor: _backgroundColor,
-    );
-
-    return Scaffold(
-      appBar: appBar,
-      body: SafeArea(
-        child: Backdrop(
-          backPanel: listView,
-          currentCategory: _currentCategory,
-          frontPanel: UnitConverter(
-            category: _currentCategory,
-          ),
-          frontTitle: Text(_currentCategory.name),
-          backTitle: Text('Select a category'),
-        ),
-      ),
+    return Backdrop(
+      currentCategory:
+          _currentCategory == null ? _defaultCategory : _currentCategory,
+      frontPanel: _currentCategory == null
+          ? UnitConverter(category: _defaultCategory)
+          : UnitConverter(category: _currentCategory),
+      backPanel: listView,
+      frontTitle: Text('Unit Converter'),
+      backTitle: Text('Select a Category'),
     );
   }
 }

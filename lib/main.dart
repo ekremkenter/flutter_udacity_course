@@ -11,6 +11,8 @@ import 'package:flutter_udacity_course/courses/06_input_task/category_route.dart
     as c6;
 import 'package:flutter_udacity_course/courses/07_backdrop/category_route.dart'
     as c7;
+import 'package:flutter_udacity_course/courses/08_responsive/category_route.dart'
+    as c8;
 
 void main() => runApp(MyApp());
 
@@ -45,18 +47,21 @@ class CoursesWidget extends StatelessWidget {
       appBar: AppBar(
         title: Text('Flutter Udacity Course'),
       ),
-      body: ListView(
-        children: <Widget>[
-          getCourseWidget(
-              context, '01 - Hello Rectangle', HelloRectangleTask()),
-          getCourseWidget(
-              context, '02 - Category Widget', CategoryWidgetTask()),
-          getCourseWidget(context, '03 - Category Route', c3.CategoryRoute()),
-          getCourseWidget(context, '04 - Navigation Task', c4.CategoryRoute()),
-          getCourseWidget(context, '05 - Stateful Widget Task', c5.CategoryRoute()),
-          getCourseWidget(context, '06 - Input Task', c6.CategoryRoute()),
-          getCourseWidget(context, '07 - Backdrop', c7.CategoryRoute()),
-        ],
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            getCourseWidget(
+                context, '01 - Hello Rectangle', HelloRectangleTask()),
+            getCourseWidget(
+                context, '02 - Category Widget', CategoryWidgetTask()),
+            getCourseWidget(context, '03 - Category Route', c3.CategoryRoute()),
+            getCourseWidget(context, '04 - Navigation Task', c4.CategoryRoute()),
+            getCourseWidget(context, '05 - Stateful Widget Task', c5.CategoryRoute()),
+            getCourseWidget(context, '06 - Input Task', c6.CategoryRoute()),
+            getCourseWidget(context, '07 - Backdrop', c7.CategoryRoute()),
+            getCourseWidget(context, '08 - Responsive', c8.CategoryRoute()),
+          ],
+        ),
       ),
     );
   }
