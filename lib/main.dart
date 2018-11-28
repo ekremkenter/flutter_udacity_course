@@ -13,6 +13,10 @@ import 'package:flutter_udacity_course/courses/07_backdrop/category_route.dart'
     as c7;
 import 'package:flutter_udacity_course/courses/08_responsive/category_route.dart'
     as c8;
+import 'package:flutter_udacity_course/courses/09_units/category_route.dart'
+    as c9;
+import 'package:flutter_udacity_course/courses/10_icons_fonts/category_route.dart'
+    as c10;
 
 void main() => runApp(MyApp());
 
@@ -34,6 +38,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: 'Raleway'
       ),
       home: CoursesWidget(),
     );
@@ -60,6 +65,8 @@ class CoursesWidget extends StatelessWidget {
             getCourseWidget(context, '06 - Input Task', c6.CategoryRoute()),
             getCourseWidget(context, '07 - Backdrop', c7.CategoryRoute()),
             getCourseWidget(context, '08 - Responsive', c8.CategoryRoute()),
+            getCourseWidget(context, '09 - Units from JSON', c9.CategoryRoute()),
+            getCourseWidget(context, '10 - Icons and Fonts', c10.CategoryRoute()),
           ],
         ),
       ),
