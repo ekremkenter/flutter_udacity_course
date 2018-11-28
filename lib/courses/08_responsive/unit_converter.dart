@@ -253,8 +253,7 @@ class _UnitConverterState extends State<UnitConverter> {
       child: OrientationBuilder(
         builder: (BuildContext context, Orientation orientation) {
           if (orientation == Orientation.landscape) {
-            return new Container(
-                child: new Row(
+            return new Row(
               children: <Widget>[
                 Expanded(
                   child: input,
@@ -264,7 +263,7 @@ class _UnitConverterState extends State<UnitConverter> {
                   child: output,
                 ),
               ],
-            ));
+            );
           } else {
             return ListView(
               children: [
